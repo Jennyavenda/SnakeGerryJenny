@@ -1,15 +1,9 @@
 """Snake, classic arcade game."""
 
-import random
 from random import randrange
 from turtle import *
 
 from freegames import square, vector
-
-"""escoge color aleatorio"""
-colores= ["blue", "purple", "pink", "yellow", "green"]
-color_aleatorio1= random.choice(colores)
-color_aleatorio2= random.choice(colores)
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
@@ -54,6 +48,13 @@ def move():
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
+ 
+def move_food():
+    
+    food.x = random.randrange(-15, 15) * 10
+    food.y = random.randrange(-15, 15) * 10
+
+    ontimer(move_food, 2000)
 
 
 setup(420, 420, 370, 0)
@@ -65,4 +66,5 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
+move_food()
 done()
