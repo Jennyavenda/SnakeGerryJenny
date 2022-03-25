@@ -1,17 +1,15 @@
-"""Snake, classic arcade game.
+"""Snake, classic arcade game."""
 
-Exercises
-
-1. How do you make the snake faster or slower?
-2. How can you make the snake go around the edges?
-3. How would you move the food?
-4. Change the snake to respond to mouse clicks.
-"""
-
+import random
 from random import randrange
 from turtle import *
 
 from freegames import square, vector
+
+"""escoge color aleatorio"""
+colores= ["blue", "purple", "pink", "yellow", "green"]
+color_aleatorio1= random.choice(colores)
+color_aleatorio2= random.choice(colores)
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
@@ -43,8 +41,8 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.x = random.randrange(-15, 15) * 10
+        food.y = random.randrange(-15, 15) * 10
     else:
         snake.pop(0)
 
