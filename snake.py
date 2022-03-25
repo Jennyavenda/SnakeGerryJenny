@@ -41,8 +41,8 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.x = random.randrange(-15, 15) * 10
+        food.y = random.randrange(-15, 15) * 10
     else:
         snake.pop(0)
 
@@ -54,6 +54,13 @@ def move():
     square(food.x, food.y, 9, color_aleatorio2)
     update()
     ontimer(move, 100)
+ 
+def move_food():
+    
+    food.x = random.randrange(-15, 15) * 10
+    food.y = random.randrange(-15, 15) * 10
+
+    ontimer(move_food, 2000)
 
 
 setup(420, 420, 370, 0)
@@ -65,4 +72,5 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
+move_food()
 done()
